@@ -1,1 +1,1 @@
-# qwe
+# Check Prime number use Function
