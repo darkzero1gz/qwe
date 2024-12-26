@@ -1,0 +1,54 @@
+//จองรถตู้
+import java.util.Scanner;
+public class rottu {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter number for booking: ");
+        int N = scanner.nextInt();
+        System.out.println("--------------------------");
+        
+        if (N < 1) {
+            System.out.println("Invalid input. number can't least 1.");
+            return;
+        }
+
+        // ตัวแปรสำหรับเก็บข้อมูลการจอง
+        String allBookings = "";
+        char currentCompany = 'A';
+        int currentDays;
+        
+        // รับข้อมูลให้ครบก่อน
+        System.out.println(" Day for booking can't more than 15 ! ");
+        System.out.println("-----------------------------------------");
+        for (int i = 1; i <= N; i++) {
+            System.out.print(" Enter number for booking: ");
+            //System.out.print(i);
+            currentDays = scanner.nextInt();
+            
+            if (currentDays < 1 || currentDays > 15) {
+                System.out.println("Invalid ! The number of days should between 1 about to 15");
+                return;
+            }
+            
+            // เก็บข้อมูลการจองในรูปแบบ String
+            allBookings = allBookings + currentCompany + " " + currentDays + "\n";
+            
+            // อัปเดตรหัสบริษัทสำหรับการจองถัดไป
+            if (currentCompany == 'A') {
+                currentCompany = 'B';
+            } else if (currentCompany == 'B') {
+                currentCompany = 'C';
+            } else {
+                currentCompany = 'A';
+            }
+        }
+        
+        // แสดงผลลัพธ์ทั้งหมดหลังจากรับข้อมูลครบ
+        System.err.println("--------------------");
+        System.out.println("List of bookings:");
+        System.out.print(allBookings);
+        
+        scanner.close();
+    }
+}
